@@ -1,8 +1,6 @@
 const express = require('express');
 
 const Category = require('../models/category');
-const Video = require('../models/video');
-
 
 const router = express.Router();
 
@@ -11,7 +9,7 @@ router.get(('/'), async (req, res) => {
         const categories = await Category.find().populate('video');
 
         return res.send({ categories });
-    }catch(err){
+    } catch (err) {
         return res.status(400).send({ error: 'Erro ao listar categorias'});
     }
 });
@@ -26,8 +24,7 @@ router.post('/', async (req, res) => {
         const category = await Category.create(req.body);
 
         return res.send({ category });
-    }catch(err){
-        console.log(err);
+    } catch (err) {
         return res.status(400).send({ error: 'Register failed'});
     }
 })
@@ -45,11 +42,8 @@ router.get('/withVideos', async (req, res) => {
             }
         ]);
 
-        console.log(categories);
-
         return res.send({ categories });
-    }catch(err){
-        console.log(err);
+    } catch (err) {
         return res.status(400).send({ error: 'Erro ao listar categorias'});
     }
 });
@@ -57,16 +51,3 @@ router.get('/withVideos', async (req, res) => {
 
 
 module.exports = app => app.use('/categories', router);
-
-
-// db.getCollection('categories').aggregate([
-//     {
-//         $lookup: {
-//             from: "videos",
-//             localField: "_id",
-//             foreignField: "category",
-//             as: "videos"
-//         }
-//     }
-//     ]);
-    

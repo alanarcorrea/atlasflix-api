@@ -8,8 +8,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./app/controllers/videoController')(app);
-require('./app/controllers/categoryController')(app);
+require('./app/controllers/video')(app);
+require('./app/controllers/category')(app);
 
 
 app.listen(4000);
