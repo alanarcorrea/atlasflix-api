@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 var cors = require('cors')
 const bodyParser = require('body-parser');
-
 const app = express();
 
 app.use(cors());
@@ -13,4 +12,4 @@ require('./app/controllers/video')(app);
 require('./app/controllers/category')(app);
 
 
-app.listen(4000);
+app.listen(process.env.PORT);
