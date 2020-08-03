@@ -10,7 +10,7 @@ router.get(('/'), async (req, res) => {
 
         return res.send({ videos });
     } catch (err) {
-        return res.status(400).send({ error: 'Erro ao listar videos'});
+        return res.status(400).send({ error: 'Error to get videos'});
     }
 });
 
@@ -25,35 +25,8 @@ router.post('/', async (req, res) => {
 
         return res.send({ video });
     } catch (err) {
-        return res.status(400).send({ error: 'Register failed'});
+        return res.status(400).send({ error: 'Error to create video' });
     }
 })
 
-// router.get(('/categories'), async (req, res) => {
-//     try {
-//         const videos = await db.videos.aggregate([
-//             {
-//                 $lookup: {
-//                     from: 'categories',
-//                     localField: 'categoryId',
-//                     foreignField: '_id',
-//                     as: 'videos_com_categoria'
-//                 }
-//             },
-//             {
-//                 $unwind: '$categoryId'
-//             },
-//             {
-//                 $videos: {
-//                     title: '$categoryId.title',
-//                 }
-//             }
-//         ]).toArray();
-       
-//         return res.send({ videos });
-
-//     } catch (err) {
-//         return res.status(400).send({ error: 'Erro ao listar categorias'});
-//     }
-// })
 module.exports = app => app.use('/videos', router);

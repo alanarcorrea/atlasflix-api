@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/db-atlasflix", {
+function host() {
+  if (process.env.PRODUCTION == 'true') {
+    return "mongodb://heroku_r1t7bkpk:316me9gmnrto21ltppn2v92gs@ds043358.mlab.com:43358/heroku_r1t7bkpk";
+  }
+  return "mongodb://localhost/db-atlasflix";
+}
+
+mongoose.connect(host(), {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true

@@ -10,7 +10,7 @@ router.get(('/'), async (req, res) => {
 
         return res.send({ categories });
     } catch (err) {
-        return res.status(400).send({ error: 'Erro ao listar categorias'});
+        return res.status(400).send({ error: 'Error to get categories'});
     }
 });
 
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
         return res.send({ category });
     } catch (err) {
-        return res.status(400).send({ error: 'Register failed'});
+        return res.status(400).send({ error: 'Error to create category'});
     }
 })
 
@@ -44,7 +44,7 @@ router.get('/withVideos', async (req, res) => {
 
         return res.send({ categories });
     } catch (err) {
-        return res.status(400).send({ error: 'Erro ao listar categorias'});
+        return res.status(400).send({ error: 'Error to get categories and videos'});
     }
 });
 
